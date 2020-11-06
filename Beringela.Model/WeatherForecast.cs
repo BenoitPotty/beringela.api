@@ -1,6 +1,6 @@
 using System;
 
-namespace Beringela.Api
+namespace Beringela.Models
 {
     public class WeatherForecast
     {

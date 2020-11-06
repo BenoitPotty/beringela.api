@@ -1,4 +1,4 @@
-using Beringela.Core.Extensions;
+using Beringela.Core.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 

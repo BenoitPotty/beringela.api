@@ -1,10 +1,9 @@
-﻿using System;
-using Beringela.Core.Configuration;
+﻿using Beringela.Core.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Beringela.Core.Extensions
+namespace Beringela.Core.Mvc
 {
     public static class StartupExtensions
     {

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using NLog.Web;
 
-namespace Beringela.Core.Extensions
+namespace Beringela.Core.Mvc
 {
     public static class ProgramExtensions
     {
