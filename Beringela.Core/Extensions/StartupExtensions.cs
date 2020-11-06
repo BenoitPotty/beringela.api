@@ -26,7 +26,6 @@ namespace Beringela.Core.Extensions
 
             app.UseSwaggerUI(c =>
             {
-            
                 c.SwaggerEndpoint(options.Swagger?.Url ?? DefaultSwaggerEndpointUrl, options.Swagger?.Name ??DefaultSwaggerEndpointName);
             });
 
