@@ -39,7 +39,7 @@ namespace Beringela.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseBeringela();
+            app.UseBeringela(Configuration);
 
             app.UseHttpsRedirection();
 
