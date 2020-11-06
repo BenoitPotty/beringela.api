@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Beringela.Core.Extensions;
 
 namespace Beringela.Api
 {
@@ -26,6 +27,8 @@ namespace Beringela.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddBeringela();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +38,8 @@ namespace Beringela.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseBeringela();
 
             app.UseHttpsRedirection();
 

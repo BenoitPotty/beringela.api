@@ -21,6 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Services", "Berin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Services.NTests", "Beringela.Services.NTests\Beringela.Services.NTests.csproj", "{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{05DE502F-41FA-462F-83E3-82454619C4C1}"
+	ProjectSection(SolutionItems) = preProject
+		Packages.md = Packages.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
