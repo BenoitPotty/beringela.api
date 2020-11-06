@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Beringela.Core.Mvc;
+using Beringela.Core.Services;
 using Beringela.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,26 +11,16 @@ namespace Beringela.Api.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase<WeatherForecast>
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger) : base(logger)
+        public WeatherForecastController(ILogger<ControllerBase<WeatherForecast>> logger, IDataService<WeatherForecast> service) : base(logger, service)
         {
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return Service.Select();
         }
+
+        
     }
 }
