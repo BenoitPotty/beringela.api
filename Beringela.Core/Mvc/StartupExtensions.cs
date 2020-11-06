@@ -1,4 +1,5 @@
 ﻿using Beringela.Core.Configuration;
+using Beringela.Core.Repositories;
 using Beringela.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,7 @@ namespace Beringela.Core.Mvc
         {
             services.AddSwaggerGen();
             services.AddScoped(typeof(IDataService<>), typeof(DataService<>));
+            services.AddScoped(typeof(IDataRepository<>), typeof(DataRepository<>));
         }
 
         //TODO : To Test

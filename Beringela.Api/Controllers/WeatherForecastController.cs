@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Beringela.Core.Mvc;
+﻿using Beringela.Core.Mvc;
 using Beringela.Core.Services;
 using Beringela.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +14,7 @@ namespace Beringela.Api.Controllers
         {
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return Service.Select();
-        }
+       
 
         
     }

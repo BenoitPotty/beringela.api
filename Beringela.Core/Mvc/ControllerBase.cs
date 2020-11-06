@@ -1,4 +1,5 @@
-﻿using Beringela.Core.Services;
+﻿using System.Collections.Generic;
+using Beringela.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,5 +17,10 @@ namespace Beringela.Core.Mvc
         }
 
         // TODO : Move Basic Methods here
+        [HttpGet]
+        public IEnumerable<T> Get()
+        {
+            return Service.Select();
+        }
     }
 }
