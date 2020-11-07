@@ -16,7 +16,7 @@ namespace Beringela.Core.Repositories
             _dbContext = dbContext;
         }
 
-        public IEnumerable<T> Select(Func<T, bool> predicate = null)
+        public IEnumerable<T> Where(Func<T, bool> predicate = null)
         {
             return _dbContext.Set<T>().Where(predicate ?? AllPredicate);
         }

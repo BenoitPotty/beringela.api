@@ -22,7 +22,7 @@ namespace Beringela.Core.Mvc
         [HttpGet]
         public IEnumerable<T> Get([FromQuery]string search)
         {
-            return Service.Select(search);
+            return Service.TextualSearch(search);
         }
 
         [HttpGet("{id}")]
