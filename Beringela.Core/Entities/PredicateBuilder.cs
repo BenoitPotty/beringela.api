@@ -48,12 +48,12 @@ namespace Beringela.Core.Entities
             return And(isNullOrEmptyExpression, containsExpression);
         }
 
-        private static UnaryExpression StringDefined(Expression nameProperty)
+        private static UnaryExpression StringDefined(Expression memberExpression)
         {
             var isNullOrEmptyMethodInfo =
                 typeof(string).GetMethod(nameof(string.IsNullOrEmpty), BindingFlags.Public | BindingFlags.Static);
 
-            var isNullOrEmptyCallExpression = Expression.Call(isNullOrEmptyMethodInfo, nameProperty);
+            var isNullOrEmptyCallExpression = Expression.Call(isNullOrEmptyMethodInfo, memberExpression);
 
             var isNullOrEmptyExpression = Expression.IsFalse(isNullOrEmptyCallExpression);
             return isNullOrEmptyExpression;
