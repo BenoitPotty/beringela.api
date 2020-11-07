@@ -3,30 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Api", "Beringela.Api\Beringela.Api.csproj", "{EE7FBD03-F1B1-4DFA-B436-D62A8104AF89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Api", "Beringela.Api\Beringela.Api.csproj", "{EE7FBD03-F1B1-4DFA-B436-D62A8104AF89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Models", "Beringela.Model\Beringela.Models.csproj", "{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Models", "Beringela.Model\Beringela.Models.csproj", "{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Models.NTests", "Beringela.Model.NTests\Beringela.Models.NTests.csproj", "{FEE0FC28-FB64-4B0A-83D4-47D5598DAD68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Models.NTests", "Beringela.Model.NTests\Beringela.Models.NTests.csproj", "{FEE0FC28-FB64-4B0A-83D4-47D5598DAD68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Core", "Beringela.Core\Beringela.Core.csproj", "{45E848E3-7783-4F5C-98AA-294D974D5F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Core", "Beringela.Core\Beringela.Core.csproj", "{45E848E3-7783-4F5C-98AA-294D974D5F74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Core.NTests", "Beringela.Core.NTests\Beringela.Core.NTests.csproj", "{E8D7BEFA-B3DF-4984-919B-5EDCEA1F0F8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Core.NTests", "Beringela.Core.NTests\Beringela.Core.NTests.csproj", "{E8D7BEFA-B3DF-4984-919B-5EDCEA1F0F8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Repositories", "Beringela.Repositories\Beringela.Repositories.csproj", "{43E19A29-7E96-4BB3-A8B5-BCF2337B4CCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Repositories", "Beringela.Repositories\Beringela.Repositories.csproj", "{43E19A29-7E96-4BB3-A8B5-BCF2337B4CCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Repositories.NTests", "Beringela.Repositories.NTests\Beringela.Repositories.NTests.csproj", "{A2D31F36-390B-4F6B-80A1-E3D064792C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Repositories.NTests", "Beringela.Repositories.NTests\Beringela.Repositories.NTests.csproj", "{A2D31F36-390B-4F6B-80A1-E3D064792C80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Services", "Beringela.Services\Beringela.Services.csproj", "{10329A08-CD8A-40BC-9E2F-BDD5B846AB1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Services", "Beringela.Services\Beringela.Services.csproj", "{10329A08-CD8A-40BC-9E2F-BDD5B846AB1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Services.NTests", "Beringela.Services.NTests\Beringela.Services.NTests.csproj", "{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Services.NTests", "Beringela.Services.NTests\Beringela.Services.NTests.csproj", "{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{05DE502F-41FA-462F-83E3-82454619C4C1}"
 	ProjectSection(SolutionItems) = preProject
 		Packages.md = Packages.md
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Core.Tests", "Beringela.Core.Tests\Beringela.Core.Tests.csproj", "{0568F3CE-D058-45BF-90CE-A71129B6F5EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,10 +68,6 @@ Global
 		{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0568F3CE-D058-45BF-90CE-A71129B6F5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0568F3CE-D058-45BF-90CE-A71129B6F5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0568F3CE-D058-45BF-90CE-A71129B6F5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0568F3CE-D058-45BF-90CE-A71129B6F5EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

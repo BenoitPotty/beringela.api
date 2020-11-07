@@ -17,8 +17,7 @@ namespace Beringela.Core.Services
         //TODO pass sort / pagination / mobile
         public IEnumerable<T> Select(string search)
         {
-            var textualSearchPredicate = DataEntity.GetTextualSearchPredicate<T>(search);
-            return Repository.Select(textualSearchPredicate);
+            return Repository.Select(PredicateBuilder.TextualSearch<T>(search));
         }
     }
 }

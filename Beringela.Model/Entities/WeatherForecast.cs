@@ -20,11 +20,6 @@ namespace Beringela.Models.Entities
             Summary = Summaries[Random.Next(Summaries.Length)];
         }
 
-
-        public override Func<IDataEntity, bool> SearchPredicate(string search) 
-        //TODO Make string comparison generic
-            => (s) => string.Compare(Summary, search, StringComparison.InvariantCultureIgnoreCase) == 0;
-
         public Guid Id { get; set; }
 
         public DateTime Date { get; set; }
