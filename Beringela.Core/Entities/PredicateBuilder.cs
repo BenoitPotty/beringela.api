@@ -48,7 +48,7 @@ namespace Beringela.Core.Entities
             return And(isNullOrEmptyExpression, containsExpression);
         }
 
-        private static UnaryExpression StringDefined(MemberExpression nameProperty)
+        private static UnaryExpression StringDefined(Expression nameProperty)
         {
             var isNullOrEmptyMethodInfo =
                 typeof(string).GetMethod(nameof(string.IsNullOrEmpty), BindingFlags.Public | BindingFlags.Static);
@@ -59,7 +59,7 @@ namespace Beringela.Core.Entities
             return isNullOrEmptyExpression;
         }
 
-        private static BinaryExpression StringContains(MemberExpression memberExpression, string search, bool? ignoreCase)
+        private static BinaryExpression StringContains(Expression memberExpression, string search, bool? ignoreCase)
         {
             var containsMethodInfo =
                 typeof(string).GetMethod(nameof(string.Contains), new[] {typeof(string), typeof(StringComparison)});
@@ -84,6 +84,7 @@ namespace Beringela.Core.Entities
         {
             return originalExpression == null ? orExpression : Expression.OrElse(originalExpression, orExpression);
         }
+
         private static Expression And(Expression originalExpression, Expression orExpression)
         {
             return originalExpression == null ? orExpression : Expression.AndAlso(originalExpression, orExpression);
