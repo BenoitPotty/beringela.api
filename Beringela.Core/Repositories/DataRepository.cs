@@ -25,5 +25,12 @@ namespace Beringela.Core.Repositories
         {
             return _dbContext.Set<T>().FirstOrDefault(entity => entity.Id.Equals(id));
         }
+
+        public T Add(T entity)
+        {
+            var savedEntity =_dbContext.Set<T>().Add(entity).Entity;
+            _dbContext.SaveChanges();
+            return savedEntity;
+        }
     }
 }

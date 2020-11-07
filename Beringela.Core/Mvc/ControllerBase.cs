@@ -30,5 +30,11 @@ namespace Beringela.Core.Mvc
         {
             return Service.Get(id);
         }
+
+        [HttpPost]
+        public T Post(T entity)
+        {
+            return Service.Add(entity);
+        }
     }
 }

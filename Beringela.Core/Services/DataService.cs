@@ -29,5 +29,11 @@ namespace Beringela.Core.Services
         {
             return Repository.Get(id);
         }
+
+        public T Add(T entity)
+        {
+            //TODO Entity validation
+            return Repository.Add(entity);
+        }
     }
 }
