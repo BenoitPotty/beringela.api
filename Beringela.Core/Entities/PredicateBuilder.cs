@@ -8,13 +8,6 @@ namespace Beringela.Core.Entities
 {
     public class PredicateBuilder
     {
-        private static IEnumerable<PropertyInfo> GetAllTextualSearchProperties<T>() where T : IDataEntity
-        {
-            var propertyInfos = typeof(T).GetProperties();
-            return propertyInfos.Where(property =>
-                Attribute.IsDefined(property, typeof(TextualSearchAttribute)));
-        }
-
         public static Func<T, bool> TextualSearch<T>(string search) where T : IDataEntity
         {
             var typeParameterExpression = Expression.Parameter(typeof(T), nameof(T));
@@ -35,6 +28,13 @@ namespace Beringela.Core.Entities
             }
 
             return textualSearchExpression == null ? DefaultTextualSearchPredicate : Expression.Lambda<Func<T, bool>>(textualSearchExpression, typeParameterExpression).Compile();
+        }
+
+        private static IEnumerable<PropertyInfo> GetAllTextualSearchProperties<T>() where T : IDataEntity
+        {
+            var propertyInfos = typeof(T).GetProperties();
+            return propertyInfos.Where(property =>
+                Attribute.IsDefined(property, typeof(TextualSearchAttribute)));
         }
 
         private static Expression ContainsSearch(Expression propertyExpression, string propertyName, string search, bool? ignoreCase)
