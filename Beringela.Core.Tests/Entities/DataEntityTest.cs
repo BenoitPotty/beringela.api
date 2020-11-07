@@ -22,7 +22,7 @@ namespace Beringela.Core.Tests.Entities
         public void GetAllTextualSearchProperties()
         {
             var properties = DataEntity.GetAllTextualSearchProperties<TestEntity>();
-            Assert.AreEqual(2, properties.Count());
+            Assert.AreEqual(3, properties.Count());
         }
 
         [TestMethod]
@@ -96,6 +96,22 @@ namespace Beringela.Core.Tests.Entities
             Assert.AreEqual(3, filteredResults.Count());
         }
 
+        [TestMethod]
+        public void GetTextualSearchPredicateMultiFieldWithoutIgnoreCaseField()
+        {
+            Func<TestEntity, bool> predicate = DataEntity.GetTextualSearchPredicate<TestEntity>("match");
+
+            var list = new List<TestEntity>
+            {
+                new TestEntity() {Summary = "Match"},
+                new TestEntity() {Summary = "NotFound", Description = "AnotherMatch"},
+                new TestEntity() {Summary = "NotFound", Description = "NotFound" , CaseSensitive = "Match"}
+            };
+
+            var filteredResults = list.Where(predicate);
+
+            Assert.AreEqual(2, filteredResults.Count());
+        }
 
         //Objective => have a func that returns Func<T, bool> predicate = null
     }

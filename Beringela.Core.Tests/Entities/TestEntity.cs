@@ -9,5 +9,8 @@ namespace Beringela.Core.Tests.Entities
 
         [TextualSearch]
         public string Description { get; set; }
+
+        [TextualSearch(IgnoreCase = false)]
+        public string CaseSensitive { get; set; }
     }
 }

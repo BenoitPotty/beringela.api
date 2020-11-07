@@ -35,13 +35,15 @@ namespace Beringela.Core.Entities
             foreach (var propertyInfo in properties)
             {
                 // TODO : GetStringComparisonFrom Attribute
-                textualSearchExpression =  Or(textualSearchExpression, ContainsSearch(parameterExpression, propertyInfo.Name, search));
+                var textualSearchAttribute = (TextualSearchAttribute)propertyInfo.GetCustomAttribute(typeof(TextualSearchAttribute));
+
+                textualSearchExpression =  Or(textualSearchExpression, ContainsSearch(parameterExpression, propertyInfo.Name, search, textualSearchAttribute?.IgnoreCase));
             }
 
             return textualSearchExpression == null ? DefaultTextualSearchPredicate : Expression.Lambda<Func<T, bool>>(textualSearchExpression, parameterExpression).Compile();
         }
 
-        private static Expression ContainsSearch(Expression listOfNames, string propertyName, string search, bool ignoreCase = true)
+        private static Expression ContainsSearch(Expression listOfNames, string propertyName, string search, bool? ignoreCase)
         {
             
             var nameProperty = Expression.Property(listOfNames, propertyName);
@@ -50,7 +52,7 @@ namespace Beringela.Core.Entities
 
             var searchedTextConstantExpression = Expression.Constant(search, typeof(string));
             
-            var stringComparisonConstantExpression = Expression.Constant(ignoreCase? StringComparison.InvariantCultureIgnoreCase : StringComparison.InvariantCulture, typeof(StringComparison));
+            var stringComparisonConstantExpression = Expression.Constant(ignoreCase.GetValueOrDefault(true) ? StringComparison.InvariantCultureIgnoreCase : StringComparison.InvariantCulture, typeof(StringComparison));
 
             var containsCallExpression = Expression.Call(nameProperty, containsMethodInfo, searchedTextConstantExpression, stringComparisonConstantExpression);
 
