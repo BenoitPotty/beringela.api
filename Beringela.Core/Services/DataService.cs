@@ -17,12 +17,12 @@ namespace Beringela.Core.Services
         //TODO pass sort / pagination / mobile
         public IEnumerable<T> TextualSearch(string search)
         {
-            return Repository.Select(PredicateBuilder.TextualSearch<T>(search));
+            return Repository.Where(PredicateBuilder.TextualSearch<T>(search));
         }
 
         public IEnumerable<T> Where(Func<T, bool> predicate)
         {
-            return Repository.Select(predicate);
+            return Repository.Where(predicate);
         }
 
         public T Get(Guid id)
