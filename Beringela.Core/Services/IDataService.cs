@@ -10,5 +10,6 @@ namespace Beringela.Core.Services
         IEnumerable<T> Where(Func<T, bool> predicate);
         T Get(Guid id);
         T Add(T entity);
+        T Delete(Guid id);
     }
 }

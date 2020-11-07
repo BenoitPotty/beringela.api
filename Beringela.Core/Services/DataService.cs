@@ -35,5 +35,10 @@ namespace Beringela.Core.Services
             //TODO Entity validation
             return Repository.Add(entity);
         }
+
+        public T Delete(Guid id)
+        {
+            return Repository.Delete(id);
+        }
     }
 }

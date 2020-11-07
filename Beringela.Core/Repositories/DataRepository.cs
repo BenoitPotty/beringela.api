@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Beringela.Core.Entities;
+using Beringela.Core.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Beringela.Core.Repositories
@@ -31,6 +33,15 @@ namespace Beringela.Core.Repositories
             var savedEntity =_dbContext.Set<T>().Add(entity).Entity;
             _dbContext.SaveChanges();
             return savedEntity;
+        }
+
+        public T Delete(Guid id)
+        {
+            var deletedEntity = Get(id);
+            if (deletedEntity == null) throw new EntityNotFoundException {Id = id};
+            _dbContext.Remove(deletedEntity);
+            _dbContext.SaveChanges();
+            return deletedEntity;
         }
     }
 }

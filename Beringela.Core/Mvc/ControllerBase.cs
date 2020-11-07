@@ -36,5 +36,11 @@ namespace Beringela.Core.Mvc
         {
             return Service.Add(entity);
         }
+
+        [HttpDelete("{id}")]
+        public T Post(Guid id)
+        {
+            return Service.Delete(id);
+        }
     }
 }

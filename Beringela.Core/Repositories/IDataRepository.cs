@@ -9,5 +9,6 @@ namespace Beringela.Core.Repositories
         IEnumerable<T> Where(Func<T, bool> predicate = null);
         T Get(Guid id);
         T Add(T entity);
+        T Delete(Guid id);
     }
 }
