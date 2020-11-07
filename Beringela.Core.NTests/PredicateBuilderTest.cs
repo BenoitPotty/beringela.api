@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Beringela.Core.Entities;
 using Beringela.Core.NTests.Entities;
@@ -111,6 +112,23 @@ namespace Beringela.Core.NTests
             var filteredResults = list.Where(predicate);
 
             Assert.AreEqual(3, filteredResults.Count());
+        }
+
+        [Test]
+        public void GetIdPredicateWithId()
+        {
+            var searchedGuid = Guid.NewGuid();
+            var predicate = PredicateBuilder.IdPredicate<TestEntity>(searchedGuid);
+
+            var list = new List<TestEntity>
+            {
+                new TestEntity() {Id = searchedGuid},
+                new TestEntity() {Id = Guid.NewGuid()},
+            };
+
+            var filteredResults = list.Where(predicate);
+
+            Assert.AreEqual(1, filteredResults.Count());
         }
     }
 }

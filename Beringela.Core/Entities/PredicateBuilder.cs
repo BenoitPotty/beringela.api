@@ -30,6 +30,13 @@ namespace Beringela.Core.Entities
             return textualSearchExpression == null ? DefaultTextualSearchPredicate : Expression.Lambda<Func<T, bool>>(textualSearchExpression, typeParameterExpression).Compile();
         }
 
+        public static Func<T, bool> IdPredicate<T>(Guid id) where T: IDataEntity
+        {
+            var typeParameterExpression = Expression.Parameter(typeof(T), nameof(T));
+            var memberExpression = Expression.Property(typeParameterExpression, nameof(IDataEntity.Id));
+            return Expression.Lambda<Func<T, bool>>(GuidEquals(memberExpression, id), typeParameterExpression).Compile();
+        }
+
         private static IEnumerable<PropertyInfo> GetAllTextualSearchProperties<T>()
         {
             var propertyInfos = typeof(T).GetProperties();
@@ -78,6 +85,19 @@ namespace Beringela.Core.Entities
 
             var containsExpression = Expression.Equal(containsCallExpression, trueConstantExpression);
             return containsExpression;
+        }
+
+        private static UnaryExpression GuidEquals(Expression memberExpression, Guid id)
+        {
+            var guidEqualsMethodInfo =
+                typeof(Guid).GetMethod(nameof(Guid.Equals), new[] { typeof(Guid) });
+
+            var searchedTextConstantExpression = Expression.Constant(id, typeof(Guid));
+
+            var guidEqualsCallExpression =
+                Expression.Call(memberExpression, guidEqualsMethodInfo, searchedTextConstantExpression);
+
+            return Expression.IsTrue(guidEqualsCallExpression);
         }
 
         private static Expression Or(Expression originalExpression, Expression orExpression)
