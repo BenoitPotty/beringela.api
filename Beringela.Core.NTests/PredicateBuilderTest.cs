@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Beringela.Core.Entities;
 using Beringela.Core.NTests.Entities;
@@ -13,7 +12,7 @@ namespace Beringela.Core.NTests
         public void FilterOnSingleTextual()
         {
 
-            Func<TestEntity, bool> predicate = PredicateBuilder.TextualSearch<TestEntity>("Match");
+            var predicate = PredicateBuilder.TextualSearch<TestEntity>("Match");
 
             var list = new List<TestEntity>
             {
@@ -31,7 +30,7 @@ namespace Beringela.Core.NTests
         public void GetTextualSearchPredicateIgnoreCaseByDefault()
         {
 
-            Func<TestEntity, bool> predicate = PredicateBuilder.TextualSearch<TestEntity>("match");
+            var predicate = PredicateBuilder.TextualSearch<TestEntity>("match");
 
             var list = new List<TestEntity>
             {
@@ -49,7 +48,7 @@ namespace Beringela.Core.NTests
         public void GetTextualSearchPredicateMultiField()
         {
 
-            Func<TestEntity, bool> predicate = PredicateBuilder.TextualSearch<TestEntity>("match");
+            var predicate = PredicateBuilder.TextualSearch<TestEntity>("match");
 
             var list = new List<TestEntity>
             {
@@ -66,7 +65,7 @@ namespace Beringela.Core.NTests
         [Test]
         public void GetTextualSearchPredicateMultiFieldWithNullField()
         {
-            Func<TestEntity, bool> predicate = PredicateBuilder.TextualSearch<TestEntity>("match");
+            var predicate = PredicateBuilder.TextualSearch<TestEntity>("match");
 
             var list = new List<TestEntity>
             {
@@ -83,7 +82,7 @@ namespace Beringela.Core.NTests
         [Test]
         public void GetTextualSearchPredicateMultiFieldWithoutIgnoreCaseField()
         {
-            Func<TestEntity, bool> predicate = PredicateBuilder.TextualSearch<TestEntity>("match");
+            var predicate = PredicateBuilder.TextualSearch<TestEntity>("match");
 
             var list = new List<TestEntity>
             {
@@ -100,7 +99,7 @@ namespace Beringela.Core.NTests
         [Test]
         public void GetTextualSearchPredicateWithNullSearch()
         {
-            Func<TestEntity, bool> predicate = PredicateBuilder.TextualSearch<TestEntity>(null);
+            var predicate = PredicateBuilder.TextualSearch<TestEntity>(null);
 
             var list = new List<TestEntity>
             {
