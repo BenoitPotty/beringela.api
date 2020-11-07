@@ -22,7 +22,7 @@ namespace Beringela.Core.Tests.Entities
         public void GetAllTextualSearchProperties()
         {
             var properties = DataEntity.GetAllTextualSearchProperties<TestEntity>();
-            Assert.AreEqual(1, properties.Count());
+            Assert.AreEqual(2, properties.Count());
         }
 
         [TestMethod]
@@ -59,6 +59,41 @@ namespace Beringela.Core.Tests.Entities
             var filteredResults = list.Where(predicate);
 
             Assert.AreEqual(2, filteredResults.Count());
+        }
+
+        [TestMethod]
+        public void GetTextualSearchPredicateMultiField()
+        {
+
+            Func<TestEntity, bool> predicate = DataEntity.GetTextualSearchPredicate<TestEntity>("match");
+
+            var list = new List<TestEntity>
+            {
+                new TestEntity() {Summary = "Match", Description = "NotFound"},
+                new TestEntity() {Summary = "AnotherMatch", Description = "NotFound"},
+                new TestEntity() {Summary = "NotFound", Description = "Match"}
+            };
+
+            var filteredResults = list.Where(predicate);
+
+            Assert.AreEqual(3, filteredResults.Count());
+        }
+
+        [TestMethod]
+        public void GetTextualSearchPredicateMultiFieldWithNullField()
+        {
+            Func<TestEntity, bool> predicate = DataEntity.GetTextualSearchPredicate<TestEntity>("match");
+
+            var list = new List<TestEntity>
+            {
+                new TestEntity() {Summary = "Match"},
+                new TestEntity() {Summary = "AnotherMatch", Description = "NotFound"},
+                new TestEntity() {Summary = "NotFound", Description = "Match"}
+            };
+
+            var filteredResults = list.Where(predicate);
+
+            Assert.AreEqual(3, filteredResults.Count());
         }
 
 

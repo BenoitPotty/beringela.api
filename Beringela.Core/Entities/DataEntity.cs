@@ -22,6 +22,7 @@ namespace Beringela.Core.Entities
 
         public static Func<T, bool> GetTextualSearchPredicate<T>(string search) where T : IDataEntity
         {
+            //TODO : why ? 
             var parameterExpression = Expression.Parameter(typeof(T), nameof(T));
             static bool DefaultTextualSearchPredicate(T entity) => true;
 
@@ -33,34 +34,46 @@ namespace Beringela.Core.Entities
             var properties = GetAllTextualSearchProperties<T>();
             foreach (var propertyInfo in properties)
             {
-               textualSearchExpression =  Or(textualSearchExpression, ContainsSearch(parameterExpression, propertyInfo.Name, search));
+                // TODO : GetStringComparisonFrom Attribute
+                textualSearchExpression =  Or(textualSearchExpression, ContainsSearch(parameterExpression, propertyInfo.Name, search));
             }
 
             return textualSearchExpression == null ? DefaultTextualSearchPredicate : Expression.Lambda<Func<T, bool>>(textualSearchExpression, parameterExpression).Compile();
         }
 
-        private static Expression ContainsSearch(Expression listOfNames, string propertyName, string search)
+        private static Expression ContainsSearch(Expression listOfNames, string propertyName, string search, bool ignoreCase = true)
         {
-            // TODO : Understand that
-            // TODO : GetStringComparisonFrom Attribute
+            
             var nameProperty = Expression.Property(listOfNames, propertyName);
 
             var containsMethodInfo = typeof(string).GetMethod(nameof(string.Contains), new[] { typeof(string), typeof(StringComparison) });
 
             var searchedTextConstantExpression = Expression.Constant(search, typeof(string));
             
-            var stringComparisonConstantExpression = Expression.Constant(StringComparison.InvariantCultureIgnoreCase, typeof(StringComparison));
+            var stringComparisonConstantExpression = Expression.Constant(ignoreCase? StringComparison.InvariantCultureIgnoreCase : StringComparison.InvariantCulture, typeof(StringComparison));
 
             var containsCallExpression = Expression.Call(nameProperty, containsMethodInfo, searchedTextConstantExpression, stringComparisonConstantExpression);
 
             var trueConstantExpression = Expression.Constant(true, typeof(bool));
 
-            return Expression.Equal(containsCallExpression, trueConstantExpression);
+            var containsExpression = Expression.Equal(containsCallExpression, trueConstantExpression);
+                
+            var isNullOrEmptyMethodInfo = typeof(string).GetMethod(nameof(string.IsNullOrEmpty), BindingFlags.Public | BindingFlags.Static);
+
+            var isNullOrEmptyCallExpression = Expression.Call(isNullOrEmptyMethodInfo, nameProperty);
+
+            var isNullOrEmptyExpression = Expression.IsFalse(isNullOrEmptyCallExpression);
+
+            return And(isNullOrEmptyExpression, containsExpression);
         }
 
         private static Expression Or(Expression originalExpression, Expression orExpression)
         {
-            return originalExpression == null ? orExpression : Expression.Or(originalExpression, orExpression);
+            return originalExpression == null ? orExpression : Expression.OrElse(originalExpression, orExpression);
+        }
+        private static Expression And(Expression originalExpression, Expression orExpression)
+        {
+            return originalExpression == null ? orExpression : Expression.AndAlso(originalExpression, orExpression);
         }
     }
 }
