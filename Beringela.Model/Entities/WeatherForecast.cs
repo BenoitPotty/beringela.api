@@ -1,6 +1,7 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Beringela.Models
+namespace Beringela.Models.Entities
 {
     public class WeatherForecast
     {
@@ -12,10 +13,13 @@ namespace Beringela.Models
 
         public WeatherForecast()
         {
+            Id = Guid.NewGuid();
             Date = DateTime.Now.AddDays(_counter++);
             TemperatureC = Random.Next(-20, 55);
             Summary = Summaries[Random.Next(Summaries.Length)];
         }
+
+        public Guid Id { get; set; }
 
         public DateTime Date { get; set; }
 

@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Beringela.Core.Mvc;
+using Beringela.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Beringela.Api
 {
@@ -21,7 +23,7 @@ namespace Beringela.Api
         {
             services.AddControllers();
 
-            services.AddBeringela();
+            services.AddBeringela<BeringelaDbContext>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
