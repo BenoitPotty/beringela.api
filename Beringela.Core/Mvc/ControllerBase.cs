@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Beringela.Core.Entities;
 using Beringela.Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,12 @@ namespace Beringela.Core.Mvc
         public IEnumerable<T> Get([FromQuery]string search)
         {
             return Service.Select(search);
+        }
+
+        [HttpGet("{id}")]
+        public T Get(Guid id)
+        {
+            return Service.Get(id);
         }
     }
 }

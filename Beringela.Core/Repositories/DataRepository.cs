@@ -20,5 +20,10 @@ namespace Beringela.Core.Repositories
         {
             return _dbContext.Set<T>().Where(predicate ?? AllPredicate);
         }
+
+        public T Get(Guid id)
+        {
+            return _dbContext.Set<T>().FirstOrDefault(entity => entity.Id.Equals(id));
+        }
     }
 }

@@ -19,5 +19,10 @@ namespace Beringela.Core.Services
         {
             return Repository.Select(PredicateBuilder.TextualSearch<T>(search));
         }
+
+        public T Get(Guid id)
+        {
+            return Repository.Get(id);
+        }
     }
 }
