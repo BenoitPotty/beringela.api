@@ -14,11 +14,11 @@ namespace Beringela.Core.Services
             Repository = repository;
         }
        
-        //TODO pass predicate / sort / pagination / mobile
+        //TODO pass sort / pagination / mobile
         public IEnumerable<T> Select(string search)
         {
-            //TODO récupérer les extualSearc properties => annotation dans model
-            return Repository.Select();
+            var textualSearchPredicate = DataEntity.GetTextualSearchPredicate<T>(search);
+            return Repository.Select(textualSearchPredicate);
         }
     }
 }

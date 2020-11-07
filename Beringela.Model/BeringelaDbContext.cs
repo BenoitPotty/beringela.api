@@ -29,9 +29,9 @@ namespace Beringela.Models
                 .Property(w => w.Id)
                 .HasConversion(new GuidToStringConverter());
             
-            
-            modelBuilder.Entity<WeatherForecast>()
-                .HasData(Enumerable.Range(1, 5).Select(index => new WeatherForecast()));
+            //TODO crashes when data already in database
+            //modelBuilder.Entity<WeatherForecast>()
+            //    .HasData(Enumerable.Range(1, 5).Select(index => new WeatherForecast()));
 
         }
     }

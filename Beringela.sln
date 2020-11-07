@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		Packages.md = Packages.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beringela.Core.Tests", "Beringela.Core.Tests\Beringela.Core.Tests.csproj", "{0568F3CE-D058-45BF-90CE-A71129B6F5EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{892D1F5A-969E-480C-A2E8-7696FCD1F3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0568F3CE-D058-45BF-90CE-A71129B6F5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0568F3CE-D058-45BF-90CE-A71129B6F5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0568F3CE-D058-45BF-90CE-A71129B6F5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0568F3CE-D058-45BF-90CE-A71129B6F5EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
