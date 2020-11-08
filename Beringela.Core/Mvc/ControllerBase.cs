@@ -21,7 +21,6 @@ namespace Beringela.Core.Mvc
             Logger = logger;
         }
 
-        // TODO : Move Basic Methods here
         [HttpGet]
         public IEnumerable<T> Get([FromQuery]string search)
         {
