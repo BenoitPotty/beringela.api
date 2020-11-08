@@ -26,6 +26,12 @@ namespace Beringela.Core.Repositories
                 .Paginate(pagingOptions);
         }
 
+        public int Count(Func<T, bool> predicate = null)
+        {
+            return _dbContext.Set<T>()
+                .Count(predicate ?? AllPredicate);
+        }
+
         public T Get(Guid id)
         {
             try

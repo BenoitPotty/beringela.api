@@ -5,36 +5,34 @@ namespace Beringela.Core.Repositories
 {
     public class PaginatedResult<T>
     {
-        public IEnumerable<T> Results { get; private set; }
-        public uint Page { get; private set; }
-        public uint PageSize { get; private set; }
-        public uint ResultStart => 0;
-        public uint ResultEnd => 0;
-        public uint Count => Results == null ? 0 : (uint)Results.Count();
-        public uint TotalCount { get; private set; }
+        public IEnumerable<T> Results { get; }
+        public uint Page { get; }
+        public uint PageSize { get; }
+        public uint ResultStart { get; }
+        public uint ResultEnd { get; } 
+        public uint Count { get; }
+        public uint TotalCount { get; }
 
-        public PaginatedResult<T> SetPage(uint page)
+        public PaginatedResult(IEnumerable<T> results, uint totalCount, PagingOptions pagingOptions = null)
         {
-            Page = page;
-            return this;
-        }
+            //TODO Test
 
-        public PaginatedResult<T> SetPageSize(uint pageSize)
-        {
-            PageSize = pageSize;
-            return this;
-        }
-
-        public PaginatedResult<T> SetResult(IEnumerable<T> results)
-        {
-            Results = results;
-            return this;
-        }
-
-        public PaginatedResult<T> SetTotalCount(uint totalCount)
-        {
             TotalCount = totalCount;
-            return this;
+            Results = results;
+            Count = Results == null ? 0 : (uint)Results.Count();
+
+            if (pagingOptions != null && pagingOptions.Paging)
+            {
+                Page = pagingOptions.Page;
+                PageSize = pagingOptions.PageSize;
+                ResultStart = Count == 0 ? 0 : ((Page - 1) * PageSize) + 1;
+                ResultEnd = ResultStart + Count - 1;
+            }
+            else
+            {
+                Page = ResultStart = 1;
+                PageSize = ResultEnd = Count;
+            }
         }
     }
 }

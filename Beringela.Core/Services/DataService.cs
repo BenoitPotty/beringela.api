@@ -23,9 +23,19 @@ namespace Beringela.Core.Services
             return Repository.Where(PredicateBuilder.TextualSearch<T>(search), sortOptions, pagingOptions);
         }
 
+        public uint TextualCount(string search)
+        {
+            return (uint)Repository.Count(PredicateBuilder.TextualSearch<T>(search));
+        }
+
         public IEnumerable<T> Where(Func<T, bool> predicate, SortOptions sortOptions, PagingOptions pagingOptions)
         {
             return Repository.Where(predicate, sortOptions, pagingOptions);
+        }
+
+        public uint Count(Func<T, bool> predicate = null)
+        {
+            return (uint)Repository.Count(predicate);
         }
 
         public T Get(Guid id)
