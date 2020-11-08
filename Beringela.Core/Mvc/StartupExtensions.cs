@@ -23,13 +23,20 @@ namespace Beringela.Core.Mvc
 
             services.AddControllers(options => options.Filters.Add(new HttpResponseExceptionFilter()));
 
-            services.AddHealthChecks().AddCheck(nameof(GeneralHealthCheck), new GeneralHealthCheck(), HealthStatus.Unhealthy);
+            var connectionString = appConfiguration.GetConnectionString("Database");
+
+            services.AddHealthChecks()
+                .AddCheck(nameof(GeneralHealthCheck), new GeneralHealthCheck(), HealthStatus.Unhealthy)
+                .AddMySql(connectionString);
             
             services.AddScoped(typeof(IDataService<>), typeof(DataService<>));
             
             services.AddScoped(typeof(IDataRepository<>), typeof(DataRepository<>));
             
-            services.AddDbContext<T>(options => options.UseMySQL(appConfiguration.GetConnectionString("Database")));
+            services.AddDbContext<T>(options =>
+            {
+                options.UseMySQL(connectionString);
+            });
             services.AddScoped<DbContext, T>();
 
         }
