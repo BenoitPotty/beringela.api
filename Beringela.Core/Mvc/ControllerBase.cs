@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Beringela.Core.Mvc
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ControllerBase<T> : ControllerBase where T : IDataEntity
     {
         protected IDataService<T> Service { get; }
