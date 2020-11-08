@@ -1,13 +1,17 @@
-﻿using Beringela.Core.Configuration;
+﻿using System.Linq;
+using Beringela.Core.Configuration;
 using Beringela.Core.Repositories;
 using Beringela.Core.Services;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Options;
 
 namespace Beringela.Core.Mvc
 {
@@ -21,7 +25,10 @@ namespace Beringela.Core.Mvc
             //Open for extension outside of core package => Action ça serait classe 
             services.AddSwaggerGen();
 
-            services.AddControllers(options => options.Filters.Add(new HttpResponseExceptionFilter()));
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(new HttpResponseExceptionFilter());
+            }).AddNewtonsoftJson();
 
             var connectionString = appConfiguration.GetConnectionString("Database");
 
@@ -38,7 +45,6 @@ namespace Beringela.Core.Mvc
                 options.UseMySQL(connectionString);
             });
             services.AddScoped<DbContext, T>();
-
         }
 
         public static void UseBeringela(this IApplicationBuilder app, IConfiguration appConfiguration = null)

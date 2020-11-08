@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Beringela.Core.Entities;
 using Beringela.Core.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -9,7 +10,7 @@ namespace Beringela.Core.Mvc
 {
     [ApiController]
     [Route("[controller]")]
-    public class ControllerBase<T> : ControllerBase where T : IDataEntity
+    public class ControllerBase<T> : ControllerBase where T : class, IDataEntity
     {
         protected IDataService<T> Service { get; }
         protected ILogger<ControllerBase<T>> Logger { get; }
@@ -43,6 +44,12 @@ namespace Beringela.Core.Mvc
         public T Post(Guid id)
         {
             return Service.Delete(id);
+        }
+
+        [HttpPatch("{id}")]
+        public T Patch(Guid id, [FromBody] JsonPatchDocument<T> patchData)
+        {
+            return Service.Patch(id, patchData);
         }
     }
 }

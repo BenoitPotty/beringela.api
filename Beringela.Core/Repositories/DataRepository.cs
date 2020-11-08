@@ -24,7 +24,14 @@ namespace Beringela.Core.Repositories
 
         public T Get(Guid id)
         {
-            return _dbContext.Set<T>().FirstOrDefault(entity => entity.Id.Equals(id));
+            try
+            {
+                return _dbContext.Set<T>().First(entity => entity.Id.Equals(id));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new EntityNotFoundException<T>(id);
+            }
         }
 
         public T Add(T entity)
@@ -41,6 +48,13 @@ namespace Beringela.Core.Repositories
             _dbContext.Remove(deletedEntity);
             _dbContext.SaveChanges();
             return deletedEntity;
+        }
+
+        public T Update(T entity)
+        {
+           var updatedEntity =  _dbContext.Update(entity).Entity;
+           _dbContext.SaveChanges();
+           return updatedEntity;
         }
     }
 }

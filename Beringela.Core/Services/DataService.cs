@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Beringela.Core.Entities;
 using Beringela.Core.Repositories;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Beringela.Core.Services
 {
-    public class DataService<T> : IDataService<T> where T : IDataEntity
+    public class DataService<T> : IDataService<T> where T : class, IDataEntity
     {
         protected IDataRepository<T> Repository { get;}
 
@@ -13,8 +14,11 @@ namespace Beringela.Core.Services
         {
             Repository = repository;
         }
-       
-        //TODO pass sort / pagination / mobile
+
+        //TODO pass sort
+        //TODO pagination
+        //TODO mobile endpoints
+        //TODO Entity validation
         public IEnumerable<T> TextualSearch(string search)
         {
             return Repository.Where(PredicateBuilder.TextualSearch<T>(search));
@@ -32,13 +36,20 @@ namespace Beringela.Core.Services
 
         public T Add(T entity)
         {
-            //TODO Entity validation
+            
             return Repository.Add(entity);
         }
 
         public T Delete(Guid id)
         {
             return Repository.Delete(id);
+        }
+
+        public T Patch(Guid id, JsonPatchDocument<T> patchData)
+        {
+            var entity = Repository.Get(id);
+            patchData.ApplyTo(entity);
+            return Repository.Update(entity);
         }
     }
 }
