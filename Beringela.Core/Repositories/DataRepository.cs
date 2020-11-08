@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Beringela.Core.Entities;
 using Beringela.Core.Exceptions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Beringela.Core.Repositories
