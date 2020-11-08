@@ -17,9 +17,9 @@ namespace Beringela.Core.Repositories
             _dbContext = dbContext;
         }
 
-        public IEnumerable<T> Where(Func<T, bool> predicate = null)
+        public IEnumerable<T> Where(Func<T, bool> predicate = null, SortOptions sortOptions = null)
         {
-            return _dbContext.Set<T>().Where(predicate ?? AllPredicate);
+            return _dbContext.Set<T>().Where(predicate ?? AllPredicate).AsQueryable().OrderByPropertyName(sortOptions);
         }
 
         public T Get(Guid id)

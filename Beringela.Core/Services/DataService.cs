@@ -15,13 +15,12 @@ namespace Beringela.Core.Services
             Repository = repository;
         }
 
-        //TODO pass sort
         //TODO pagination
         //TODO mobile endpoints
         //TODO Entity validation
-        public IEnumerable<T> TextualSearch(string search)
+        public IEnumerable<T> TextualSearch(string search, SortOptions sortOptions)
         {
-            return Repository.Where(PredicateBuilder.TextualSearch<T>(search));
+            return Repository.Where(PredicateBuilder.TextualSearch<T>(search), sortOptions);
         }
 
         public IEnumerable<T> Where(Func<T, bool> predicate)

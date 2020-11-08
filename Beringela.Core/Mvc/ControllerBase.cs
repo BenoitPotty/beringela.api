@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Beringela.Core.Entities;
+using Beringela.Core.Repositories;
 using Beringela.Core.Services;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -22,9 +23,9 @@ namespace Beringela.Core.Mvc
         }
 
         [HttpGet]
-        public IEnumerable<T> Get([FromQuery]string search)
+        public IEnumerable<T> Get([FromQuery]string search, [FromQuery]string sort = null, [FromQuery]bool descending = false)
         {
-            return Service.TextualSearch(search);
+            return Service.TextualSearch(search, new SortOptions(sort, descending));
         }
 
         [HttpGet("{id}")]
