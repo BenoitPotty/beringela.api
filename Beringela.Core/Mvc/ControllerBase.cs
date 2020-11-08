@@ -23,9 +23,9 @@ namespace Beringela.Core.Mvc
         }
 
         [HttpGet]
-        public IEnumerable<T> Get([FromQuery]string search, [FromQuery]string sort = null, [FromQuery]bool descending = false)
+        public IEnumerable<T> Get([FromQuery]string search, [FromQuery]string sort = null, [FromQuery]bool descending = false, [FromQuery] uint page = 0, [FromQuery] uint pageSize = 0)
         {
-            return Service.TextualSearch(search, new SortOptions(sort, descending));
+            return Service.TextualSearch(search, new SortOptions(sort, descending), new PagingOptions(page, pageSize));
         }
 
         [HttpGet("{id}")]

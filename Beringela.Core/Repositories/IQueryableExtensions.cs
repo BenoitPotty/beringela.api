@@ -6,7 +6,7 @@ namespace Beringela.Core.Repositories
 {
     public static class QueryableExtensions
     {
-        public static IQueryable<T> OrderByPropertyName<T>(this IQueryable<T> queryable, SortOptions sortOptions = null)
+        public static IQueryable<T> Sort<T>(this IQueryable<T> queryable, SortOptions sortOptions = null)
         {
             if (sortOptions?.PropertyName == null) return queryable;
             
@@ -27,6 +27,13 @@ namespace Beringela.Core.Repositories
             var types = new[] { queryable.ElementType, lambda.Body.Type };
             var rs = Expression.Call(typeof(Queryable), methodName, types, queryable.Expression, lambda);
             return queryable.Provider.CreateQuery<T>(rs);
+        }
+
+        public static IQueryable<T> Paginate<T>(this IQueryable<T> queryable, PagingOptions pagingOptions = null)
+        {
+            if (pagingOptions == null || !pagingOptions.Paging) return queryable;
+
+            return queryable.Skip(pagingOptions.Skip).Take((int) pagingOptions.PageSize);
         }
     }
 }

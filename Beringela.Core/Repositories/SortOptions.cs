@@ -2,8 +2,8 @@
 {
     public class SortOptions
     {
-        public string PropertyName { get; set; } = null;
-        public bool Descending { get; set; } = false;
+        public string PropertyName { get; set; }
+        public bool Descending { get; set; }
         
         public SortOptions(string propertyName = null, bool descending = false)
         {

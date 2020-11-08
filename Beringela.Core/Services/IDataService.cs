@@ -8,8 +8,8 @@ namespace Beringela.Core.Services
 {
     public interface IDataService<T> where T : class, IDataEntity
     {
-        IEnumerable<T> TextualSearch(string search, SortOptions sortOptions);
-        IEnumerable<T> Where(Func<T, bool> predicate);
+        IEnumerable<T> TextualSearch(string search, SortOptions sortOptions, PagingOptions pagingOptions);
+        IEnumerable<T> Where(Func<T, bool> predicate, SortOptions sortOptions, PagingOptions pagingOptions);
         T Get(Guid id);
         T Add(T entity);
         T Delete(Guid id);
