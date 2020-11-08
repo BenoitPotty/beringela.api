@@ -16,7 +16,6 @@ namespace Beringela.Core.Repositories
         public PaginatedResult(IEnumerable<T> results, uint totalCount, PagingOptions pagingOptions = null)
         {
             //TODO Test
-
             TotalCount = totalCount;
             Results = results;
             Count = Results == null ? 0 : (uint)Results.Count();
@@ -30,7 +29,8 @@ namespace Beringela.Core.Repositories
             }
             else
             {
-                Page = ResultStart = 1;
+                Page = 1;
+                ResultStart = Count == 0 ? Count : Page;
                 PageSize = ResultEnd = Count;
             }
         }

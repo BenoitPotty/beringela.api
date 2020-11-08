@@ -15,7 +15,6 @@ namespace Beringela.Core.Services
             Repository = repository;
         }
 
-        //TODO pagination => paginated result structure
         //TODO mobile endpoints
         //TODO Entity validation
         public IEnumerable<T> TextualSearch(string search, SortOptions sortOptions, PagingOptions pagingOptions)
