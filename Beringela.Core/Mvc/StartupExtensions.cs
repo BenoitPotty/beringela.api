@@ -17,6 +17,9 @@ namespace Beringela.Core.Mvc
         {
             //Open for extension outside of core package => Action ça serait classe 
             services.AddSwaggerGen();
+
+            services.AddControllers(options => options.Filters.Add(new HttpResponseExceptionFilter()));
+            
             
             services.AddScoped(typeof(IDataService<>), typeof(DataService<>));
             
