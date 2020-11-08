@@ -38,7 +38,7 @@ namespace Beringela.Core.Repositories
         public T Delete(Guid id)
         {
             var deletedEntity = Get(id);
-            if (deletedEntity == null) throw new EntityNotFoundException(id);
+            if (deletedEntity == null) throw new EntityNotFoundException<T>(id);
             _dbContext.Remove(deletedEntity);
             _dbContext.SaveChanges();
             return deletedEntity;
