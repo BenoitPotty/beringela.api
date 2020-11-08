@@ -1,11 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Net;
 
 namespace Beringela.Core.Exceptions
 {
-    public class EntityNotFoundException : Exception
+    public class EntityNotFoundException : HttpResponseException
     {
-        public Guid Id { get; set; }    
+        public EntityNotFoundException(Guid id) : base(HttpStatusCode.NotFound)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; }    
     }
 }
