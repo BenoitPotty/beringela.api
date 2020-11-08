@@ -7,6 +7,7 @@ namespace Beringela.Api.Controllers
 {
     public class WeatherForecastController : ControllerBase<WeatherForecast>
     {
+        //TODO : Memory leak on when calling this method several time (di tests with gatling)
         public WeatherForecastController(ILogger<ControllerBase<WeatherForecast>> logger, IDataService<WeatherForecast> service) : base(logger, service)
         {
         }

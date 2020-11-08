@@ -14,6 +14,7 @@ namespace Beringela.Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            //TODO : Implement OneSignal support
         }
 
         public IConfiguration Configuration { get; }
