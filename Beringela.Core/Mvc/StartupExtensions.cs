@@ -1,10 +1,13 @@
 ﻿using Beringela.Core.Configuration;
 using Beringela.Core.Repositories;
 using Beringela.Core.Services;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Beringela.Core.Mvc
 {
@@ -19,7 +22,8 @@ namespace Beringela.Core.Mvc
             services.AddSwaggerGen();
 
             services.AddControllers(options => options.Filters.Add(new HttpResponseExceptionFilter()));
-            
+
+            services.AddHealthChecks().AddCheck(nameof(GeneralHealthCheck), new GeneralHealthCheck(), HealthStatus.Unhealthy);
             
             services.AddScoped(typeof(IDataService<>), typeof(DataService<>));
             
@@ -27,6 +31,7 @@ namespace Beringela.Core.Mvc
             
             services.AddDbContext<T>(options => options.UseMySQL(appConfiguration.GetConnectionString("Database")));
             services.AddScoped<DbContext, T>();
+
         }
 
         public static void UseBeringela(this IApplicationBuilder app, IConfiguration appConfiguration = null)
@@ -41,6 +46,11 @@ namespace Beringela.Core.Mvc
                 c.SwaggerEndpoint(options.Swagger?.Url ?? DefaultSwaggerEndpointUrl, options.Swagger?.Name ?? DefaultSwaggerEndpointName);
             });
 
+            app.UseHealthChecks(options.HealthChecksUrl, new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
         }
     }
 }

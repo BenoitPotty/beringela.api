@@ -33,14 +33,14 @@ namespace Beringela.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseBeringela(Configuration);
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseBeringela(Configuration);
 
             app.UseEndpoints(endpoints =>
             {
