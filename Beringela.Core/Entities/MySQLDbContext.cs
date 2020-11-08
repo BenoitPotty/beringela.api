@@ -23,9 +23,6 @@ namespace Beringela.Core.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //TODO crashes when data already in database
-            //modelBuilder.Entity<WeatherForecast>()
-            //    .HasData(Enumerable.Range(1, 5).Select(index => new WeatherForecast()));
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetProperties()))
             {
                 if (property.ClrType != typeof(Guid)) continue;

@@ -3,14 +3,16 @@ using System;
 using Beringela.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Beringela.Models.Migrations
 {
     [DbContext(typeof(BeringelaDbContext))]
-    partial class BeringelaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201108142032_Init Data")]
+    partial class InitData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
