@@ -23,7 +23,7 @@ namespace Beringela.Core.Mvc
         }
 
         [HttpGet]
-        public PaginatedResult<T> Get([FromQuery]string search, [FromQuery]string sort = null, [FromQuery]bool descending = false, [FromQuery] uint page = 0, [FromQuery] uint pageSize = 0)
+        public virtual PaginatedResult<T> Get([FromQuery]string search, [FromQuery]string sort = null, [FromQuery]bool descending = false, [FromQuery] uint page = 0, [FromQuery] uint pageSize = 0)
         {
             var pagingOptions = new PagingOptions(page, pageSize);
             
@@ -34,25 +34,25 @@ namespace Beringela.Core.Mvc
         }
 
         [HttpGet("{id}")]
-        public T Get(Guid id)
+        public virtual T Get(Guid id)
         {
             return Service.Get(id);
         }
 
         [HttpPost]
-        public T Post(T entity)
+        public virtual T Post(T entity)
         {
             return Service.Add(entity);
         }
 
         [HttpDelete("{id}")]
-        public T Post(Guid id)
+        public virtual T Post(Guid id)
         {
             return Service.Delete(id);
         }
 
         [HttpPatch("{id}")]
-        public T Patch(Guid id, [FromBody] JsonPatchDocument<T> patchData)
+        public virtual T Patch(Guid id, [FromBody] JsonPatchDocument<T> patchData)
         {
             return Service.Patch(id, patchData);
         }
