@@ -1,12 +1,9 @@
-﻿using System.Linq;
-using Beringela.Core.Configuration;
+﻿using Beringela.Core.Configuration;
 using Beringela.Core.Repositories;
 using Beringela.Core.Services;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,7 +39,7 @@ namespace Beringela.Core.Mvc
             
             services.AddDbContext<T>(options =>
             {
-                options.UseMySQL(connectionString);
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
             services.AddScoped<DbContext, T>();
         }

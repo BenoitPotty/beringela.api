@@ -11,8 +11,8 @@ namespace Beringela.Models
     {
         public DbSet<WeatherForecast> WeatherForecasts { get; set; }
 
-        public BeringelaDbContext(DbContextOptions<BeringelaDbContext> options, IConfiguration appConfiguration)
-            : base(options, appConfiguration)
+        public BeringelaDbContext(IConfiguration appConfiguration)
+            : base(appConfiguration)
         {
             ConnectionString = appConfiguration.GetConnectionString("DataBase");
         }

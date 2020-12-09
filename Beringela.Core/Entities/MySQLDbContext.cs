@@ -10,14 +10,14 @@ namespace Beringela.Core.Entities
     {
         protected string ConnectionString { get; set; }
 
-        protected MySqlDbContext(DbContextOptions options, IConfiguration appConfiguration) : base(options)
+        protected MySqlDbContext(IConfiguration appConfiguration)
         {
             ConnectionString = appConfiguration.GetConnectionString("DevDatabase");
         }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(ConnectionString);
+            optionsBuilder.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString));
         }
 
 
