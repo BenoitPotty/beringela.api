@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿ using System;
 using Beringela.Core.Entities;
 using Beringela.Core.Repositories;
 using Beringela.Core.Services;
