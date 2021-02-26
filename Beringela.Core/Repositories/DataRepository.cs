@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Beringela.Core.Entities;
 using Beringela.Core.Exceptions;
@@ -44,11 +45,19 @@ namespace Beringela.Core.Repositories
             }
         }
 
-        public T Add(T entity)
+        public T Add([NotNull]T entity)
         {
-            var savedEntity =_dbContext.Set<T>().Add(entity).Entity;
-            _dbContext.SaveChanges();
-            return savedEntity;
+            try
+            {
+                var savedEntity = _dbContext.Set<T>().Add(entity).Entity;
+                _dbContext.SaveChanges();
+                return savedEntity;
+            }
+            catch (DbUpdateException)
+            {
+                //TODO Log and serialize exception
+                throw new EntityUpdateException<T>(entity);
+            }
         }
 
         public T Delete(Guid id)
@@ -60,8 +69,9 @@ namespace Beringela.Core.Repositories
             return deletedEntity;
         }
 
-        public T Update(T entity)
+        public T Update([NotNull]T entity)
         {
+            //TODO : Manage Entity Not Found
            var updatedEntity =  _dbContext.Update(entity).Entity;
            _dbContext.SaveChanges();
            return updatedEntity;

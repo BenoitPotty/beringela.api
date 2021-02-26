@@ -8,12 +8,13 @@ namespace Beringela.Core.Mvc
     {
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            if (!(context.Exception is HttpResponseException e)) return;
+            if (context.Exception is not HttpResponseException e) return;
 
             context.Result = new ObjectResult(new ErrorResult(e))
             {
-                StatusCode = (int)e.StatusCode
+                StatusCode = (int)e.StatusCode,
             };
+
             context.ExceptionHandled = true;
         }
 
