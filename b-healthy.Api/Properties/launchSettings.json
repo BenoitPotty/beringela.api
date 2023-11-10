@@ -20,7 +20,7 @@
     "Beringela.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "tests",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
