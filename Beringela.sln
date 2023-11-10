@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Api", "Beringela.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Models", "Beringela.Model\Beringela.Models.csproj", "{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Models.NTests", "Beringela.Model.NTests\Beringela.Models.NTests.csproj", "{FEE0FC28-FB64-4B0A-83D4-47D5598DAD68}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Core", "Beringela.Core\Beringela.Core.csproj", "{45E848E3-7783-4F5C-98AA-294D974D5F74}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Core.NTests", "Beringela.Core.NTests\Beringela.Core.NTests.csproj", "{E8D7BEFA-B3DF-4984-919B-5EDCEA1F0F8F}"
@@ -32,10 +30,6 @@ Global
 		{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEE0FC28-FB64-4B0A-83D4-47D5598DAD68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEE0FC28-FB64-4B0A-83D4-47D5598DAD68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEE0FC28-FB64-4B0A-83D4-47D5598DAD68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEE0FC28-FB64-4B0A-83D4-47D5598DAD68}.Release|Any CPU.Build.0 = Release|Any CPU
 		{45E848E3-7783-4F5C-98AA-294D974D5F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45E848E3-7783-4F5C-98AA-294D974D5F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45E848E3-7783-4F5C-98AA-294D974D5F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
