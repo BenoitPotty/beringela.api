@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Api", "Beringela.Api\Beringela.Api.csproj", "{EE7FBD03-F1B1-4DFA-B436-D62A8104AF89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "b-healthy.Api", "b-healthy.Api\b-healthy.Api.csproj", "{EE7FBD03-F1B1-4DFA-B436-D62A8104AF89}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Models", "Beringela.Model\Beringela.Models.csproj", "{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "b-healthy.Models", "Beringela.Model\b-healthy.Models.csproj", "{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Core", "Beringela.Core\Beringela.Core.csproj", "{45E848E3-7783-4F5C-98AA-294D974D5F74}"
 EndProject
