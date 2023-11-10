@@ -23,13 +23,13 @@ namespace Beringela.Core.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetProperties()))
-            {
-                if (property.ClrType != typeof(Guid)) continue;
-                var converterType = typeof(GuidToStringConverter);
-                var setValueConverterMethodInfo = typeof(MutablePropertyExtensions).GetMethod("SetValueConverter");
-                setValueConverterMethodInfo.Invoke(property, new[] { property, Activator.CreateInstance(converterType, (object)null) });
-            }
+            // foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetProperties()))
+            // {
+            //     if (property.ClrType != typeof(Guid)) continue;
+            //     var converterType = typeof(GuidToStringConverter);
+            //     var setValueConverterMethodInfo = typeof(MutablePropertyExtensions).GetMethod("SetValueConverter");
+            //     setValueConverterMethodInfo.Invoke(property, new[] { property, Activator.CreateInstance(converterType, (object)null) });
+            // }
         }
 
     }
