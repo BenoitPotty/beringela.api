@@ -18,7 +18,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Beringela.Core\Beringela.Core.csproj" />
-    <ProjectReference Include="..\Beringela.Model\b-healthy.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 

@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "b-healthy.Api", "b-healthy.Api\b-healthy.Api.csproj", "{EE7FBD03-F1B1-4DFA-B436-D62A8104AF89}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "b-healthy.Models", "Beringela.Model\b-healthy.Models.csproj", "{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Core", "Beringela.Core\Beringela.Core.csproj", "{45E848E3-7783-4F5C-98AA-294D974D5F74}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beringela.Core.NTests", "Beringela.Core.NTests\Beringela.Core.NTests.csproj", "{E8D7BEFA-B3DF-4984-919B-5EDCEA1F0F8F}"
@@ -26,10 +24,6 @@ Global
 		{EE7FBD03-F1B1-4DFA-B436-D62A8104AF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE7FBD03-F1B1-4DFA-B436-D62A8104AF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE7FBD03-F1B1-4DFA-B436-D62A8104AF89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD258A4B-4A6A-4679-B3C8-D2B81A51CF79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{45E848E3-7783-4F5C-98AA-294D974D5F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45E848E3-7783-4F5C-98AA-294D974D5F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45E848E3-7783-4F5C-98AA-294D974D5F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
