@@ -17,7 +17,7 @@ namespace Beringela.Models.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Beringela.Models.Entities.WeatherForecast", b =>
+            modelBuilder.Entity("b-healthy.Models.Entities.WeatherForecast", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
