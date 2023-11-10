@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\b-healthy.Data\b-healthy.Data.csproj" />
     <ProjectReference Include="..\Beringela.Core\Beringela.Core.csproj" />
   </ItemGroup>
 
