@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "b-healthy.Data", "b-healthy.Data\b-healthy.Data.csproj", "{5E67F45E-DCE8-45B4-A2DC-8868D2C271D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "b-healthy.FitnessTesting", "b-healthy.FitnessTesting\b-healthy.FitnessTesting.csproj", "{1C5DA85D-C10D-4C2F-A9E0-AE37AD2EF1DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "b-healthy.FitnessTesting.NTests", "b-healthy.FitnessTesting.NTests\b-healthy.FitnessTesting.NTests.csproj", "{9EC7B1E2-D697-4686-92CB-E03BF4353E42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{5E67F45E-DCE8-45B4-A2DC-8868D2C271D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E67F45E-DCE8-45B4-A2DC-8868D2C271D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E67F45E-DCE8-45B4-A2DC-8868D2C271D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5DA85D-C10D-4C2F-A9E0-AE37AD2EF1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5DA85D-C10D-4C2F-A9E0-AE37AD2EF1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5DA85D-C10D-4C2F-A9E0-AE37AD2EF1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5DA85D-C10D-4C2F-A9E0-AE37AD2EF1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC7B1E2-D697-4686-92CB-E03BF4353E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC7B1E2-D697-4686-92CB-E03BF4353E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC7B1E2-D697-4686-92CB-E03BF4353E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC7B1E2-D697-4686-92CB-E03BF4353E42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
