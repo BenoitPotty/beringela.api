@@ -1,4 +1,7 @@
 
+using b_healthy.Data;
+using b_healthy.FitnessTesting;
+using Beringela.Api.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Beringela.Api.Controllers;
@@ -7,9 +10,21 @@ namespace Beringela.Api.Controllers;
 [Route("[controller]")]
 public class TestsController: ControllerBase
 {
-    [HttpGet]
-    public object GetTests()
+    [HttpPost]
+    public IActionResult EvaluateRestingHeartRate([FromBody]RestingHeartRateDto restringRestingHeartRateDto)
     {
-        return new { Test = "Test" };
+        if (!restringRestingHeartRateDto.Validate())
+        {
+            return BadRequest();
+        }
+
+        var test = new RestingHeartRate();
+        
+        var classification = test.Compute(restringRestingHeartRateDto.Gender, restringRestingHeartRateDto.Age,
+            restringRestingHeartRateDto.Rate);
+        
+        var returnValue =  new TestResult() { Classification = classification };
+        
+        return Ok(returnValue);
     }
 }

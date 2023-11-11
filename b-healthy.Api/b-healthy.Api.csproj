@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\b-healthy.Data\b-healthy.Data.csproj" />
+    <ProjectReference Include="..\b-healthy.FitnessTesting\b-healthy.FitnessTesting.csproj" />
     <ProjectReference Include="..\Beringela.Core\Beringela.Core.csproj" />
   </ItemGroup>
 
